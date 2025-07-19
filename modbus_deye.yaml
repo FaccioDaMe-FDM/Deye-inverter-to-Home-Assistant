@@ -1,0 +1,1728 @@
+###  INVERTER DEYE SUN-6K-SG03LP1  ###
+
+
+###   9600 8 1 none none modbus   ###   RS485 BMS port   ###
+
+
+modbus:
+- name: Deye_Inverter
+  type: tcp
+  host: 192.178.xxx.xxx               ###   add your converter ip address   ###
+  port: 32xx                          ###   add your converter port   ###
+
+  binary_sensors:
+
+    # 194 Grid Connected Status
+    - name: "Deye_Inverter Grid Connected Status"
+      unique_id: Deye_Inverter Grid Connected Status
+      slave: 1
+      address: 194
+      input_type: holding
+      scan_interval: 1
+
+  sensors:
+
+###   BATTERY   ###
+
+    # 182 Battery Temperature
+    - name: "Deye_Inverter Battery Temperature"
+      unique_id: Deye_Inverter Battery Temperature
+      device_class: temperature
+      unit_of_measurement: "°C"
+      slave: 1
+      address: 182
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: -96
+      precision: 1
+      scan_interval: 1
+
+    # 183 Battery Voltage
+    - name: "Deye_Inverter Battery Voltage"
+      unique_id: Deye_Inverter Battery Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 183
+      data_type: uint16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 184 Battery SOC
+    - name: "Deye_Inverter Battery SOC"
+      unique_id: Deye_Inverter Battery SOC
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 1
+      address: 184
+      data_type: uint16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 190 Battery Power
+    - name: "Deye_Inverter Battery Power"
+      unique_id: Deye_Inverter Battery Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 190
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 191 Battery Current
+    - name: "Deye_Inverter Battery Current"
+      unique_id: Deye_Inverter Battery Current
+      device_class: current
+      unit_of_measurement: "A"
+      slave: 1
+      address: 191
+      data_type: int16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 314 Battery Charge Limit Current
+    - name: "Deye_Inverter Battery Charge Limit Current"
+      unique_id: Deye_Inverter Battery Charge Limit Current
+      device_class: current
+      unit_of_measurement: "A"
+      slave: 1
+      address: 314
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 315 Battery Charge Limit Current
+    - name: "Deye_Inverter Battery Discharge Limit Current"
+      unique_id: Deye_Inverter Battery Discharge Limit Current
+      device_class: current
+      unit_of_measurement: "A"
+      slave: 1
+      address: 315
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 217 Battery Capacity Shutdown
+    - name: "Deye_Inverter Battery Capacity Shutdown"
+      unique_id: Deye_Inverter Battery Capacity Shutdown
+      device_class: battery 
+      unit_of_measurement: "%"
+      slave: 1
+      address: 217
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 218 Battery Restart Capacity
+    - name: "Deye_Inverter Battery Restart Capacity"
+      unique_id: Deye_Inverter Battery Restart Capacity
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 1
+      address: 218
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 219 Battery Low Capacity
+    - name: "Deye_Inverter Battery Low Capacity"
+      unique_id: Deye_Inverter Battery Low Capacity
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 1
+      address: 219
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 220 Battery Shutdown Voltage
+    - name: "Deye_Inverter Battery Shutdown Voltage"
+      unique_id: Deye_Inverter Battery Shutdown Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 220
+      data_type: int16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 221 Battery Restart Voltage
+    - name: "Deye_Inverter Battery Restart Voltage"
+      unique_id: Deye_Inverter Battery Restart Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 221
+      data_type: int16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 222 Battery Low Voltage
+    - name: "Deye_Inverter Battery Low Voltage"
+      unique_id: Deye_Inverter Battery Low Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 222
+      data_type: int16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 201 Battery Equalization Voltage
+    - name: "Deye_Inverter Battery Equalization Voltage"
+      unique_id: Deye_Inverter Battery Equalization Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 201
+      data_type: int16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 202 Battery Absorption Voltage
+    - name: "Deye_Inverter Battery Absorption Voltage"
+      unique_id: Deye_Inverter Battery Absorption Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 202
+      data_type: int16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 203 Battery Float Voltage
+    - name: "Deye_Inverter Battery Float Voltage"
+      unique_id: Deye_Inverter Battery Float Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 203
+      data_type: int16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+###   INVERTER   ###
+
+    # 175 Inverter Power
+    - name: "Deye_Inverter Power"
+      unique_id: Deye_Inverter Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 175
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 154 Inverter Voltage
+    - name: "Deye_Inverter Voltage"
+      unique_id: Deye_Inverter Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 154
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 164 Inverter Current
+    - name: "Deye_Inverter Current"
+      unique_id: Deye_Inverter Current
+      device_class: current
+      unit_of_measurement: "A"
+      slave: 1
+      address: 164
+      data_type: int16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 193 Inverter Frequency
+    - name: "Deye_Inverter Frequency"
+      unique_id: Deye_Inverter Frequency
+      device_class: frequency
+      unit_of_measurement: "Hz"
+      slave: 1
+      address: 193
+      data_type: uint16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+###   GRID   ###
+
+    # 079 Grid Frequency
+    - name: "Deye_Inverter Grid Frequency"
+      unique_id: Deye_Inverter Grid Frequency
+      device_class: frequency
+      unit_of_measurement: "Hz"
+      slave: 1
+      address: 079
+      data_type: uint16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 169 Grid Power
+    - name: "Deye_Inverter Grid Power"
+      unique_id: Deye_Inverter Grid Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 169
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 167 Grid L1 Power
+    - name: "Deye_Inverter Grid L1 Power"
+      unique_id: Deye_Inverter Grid L1 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 167
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 168 Grid L2 Power
+    - name: "Deye_Inverter Grid L2 Power"
+      unique_id: Deye_Inverter Grid L2 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 168
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 150 Grid Voltage
+    - name: "Deye_Inverter Grid Voltage"
+      unique_id: Deye_Inverter Grid Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 150
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 160 Grid Current
+    - name: "Deye_Inverter Grid Current"
+      unique_id: Deye_Inverter Grid Current
+      device_class: current
+      unit_of_measurement: "A"
+      slave: 1
+      address: 160
+      data_type: int16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 172 Grid CT Power
+    - name: "Deye_Inverter Grid CT Power"
+      unique_id: Deye_Inverter Grid CT Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 172
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+###   LOAD   ###
+
+    # 178 Load Power
+    - name: "Deye_Inverter Load Power"
+      unique_id: Deye_Inverter Load Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 178
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 176 Load L1 Power
+    - name: "Deye_Inverter Load L1 Power"
+      unique_id: Deye_Inverter Load L1 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 176
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 177 Load L2 Power
+    - name: "Deye_Inverter Load L2 Power"
+      unique_id: Deye_Inverter Load L2 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 177
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 192 Load Frequency
+    - name: "Deye_Inverter Load Frequency"
+      unique_id: Deye_Inverter Load Frequency
+      device_class: frequency
+      unit_of_measurement: "Hz"
+      slave: 1
+      address: 192
+      data_type: uint16
+      input_type: holding
+      scale: 0.01
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+###   SOLAR PV1   ###
+
+    # 186 PV1 Power
+    - name: "Deye_Inverter PV1 Power"
+      unique_id: Deye_Inverter PV1 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 186
+      data_type: uint16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 109 PV1 Voltage
+    - name: "Deye_Inverter PV1 Voltage"
+      unique_id: Deye_Inverter PV1 Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 109
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 110 PV1 Current
+    - name: "Deye_Inverter PV1 Current"
+      unique_id: Deye_Inverter PV1 Current
+      device_class: current
+      unit_of_measurement: "A"
+      slave: 1
+      address: 110
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+###   SOLAR PV2   ###
+
+    # 187 PV2 Power
+    - name: "Deye_Inverter PV2 Power"
+      unique_id: Deye_Inverter PV2 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 187
+      data_type: uint16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 111 PV2 Voltage
+    - name: "Deye_Inverter PV2 Voltage"
+      unique_id: Deye_Inverter PV2 Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 111
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 112 PV2 Current
+    - name: "Deye_Inverter PV2 Current"
+      unique_id: Deye_Inverter PV2 Current
+      device_class: current
+      unit_of_measurement: "A"
+      slave: 1
+      address: 112
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+###   OUTPUTS   ###
+
+    # 166 Aux Power
+    - name: "Deye_Inverter Aux Power"
+      unique_id: Deye_Inverter Aux Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 166
+      data_type: int16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+###   ENERGY   ###
+
+    # 070 Day Battery Charge
+    - name: "Deye_Inverter Day Battery Charge"
+      unique_id: Deye_Inverter Day Battery Charge
+      device_class: energy_storage
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 70
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 071 Day Battery Discharge
+    - name: "Deye_Inverter Day Battery Discharge"
+      unique_id: Deye_Inverter Day Battery Discharge
+      device_class: energy_storage
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 71
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 072 Total Battery Charge
+    - name: "Deye_Inverter Total Battery Charge"
+      unique_id: Deye_Inverter Total Battery Charge
+      device_class: energy_storage
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 72
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 074 Total Battery Discharge
+    - name: "Deye_Inverter Total Battery Discharge"
+      unique_id: Deye_Inverter Total Battery Discharge
+      device_class: energy_storage
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 74
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 076 Day Grid Import
+    - name: "Deye_Inverter Day Grid Import"
+      unique_id: Deye_Inverter Day Grid Import
+      device_class: energy
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 76
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 077 Day Grid Export
+    - name: "Deye_Inverter Day Grid Export"
+      unique_id: Deye_Inverter Day Grid Export
+      device_class: energy
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 77
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 078 Total Grid Import
+    - name: "Deye_Inverter Total Grid Import"
+      unique_id: Deye_Inverter Total Grid Import
+      device_class: energy
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 78
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 081 Total Grid Export
+    - name: "Deye_Inverter Total Grid Export"
+      unique_id: Deye_Inverter Total Grid Export
+      device_class: energy
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 81
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 084 Day Load Energy
+    - name: "Deye_Inverter Day Load Energy"
+      unique_id: Deye_Inverter Day Load Energy
+      device_class: energy
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 84
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 085 Total Load Energy
+    - name: "Deye_Inverter Total Load Energy"
+      unique_id: Deye_Inverter Total Load Energy
+      device_class: energy
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 85
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+    # 108 Day PV Energy
+    - name: "Deye_Inverter Day PV Energy"
+      unique_id: Deye_Inverter Day PV Energy
+      device_class: energy
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 108
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 1
+      scan_interval: 1
+
+    # 096 Total PV Energy
+    - name: "Deye_Inverter Total PV Energy"
+      unique_id: Deye_Inverter Total PV Energy
+      device_class: energy
+      unit_of_measurement: "kWh"
+      state_class: total_increasing
+      slave: 1
+      address: 096
+      data_type: uint16
+      input_type: holding
+      scale: 0.1
+      offset: 0
+      precision: 2
+      scan_interval: 1
+
+###   TEMPERATURE   ###
+
+    # 090 DC Temperature
+    - name: "Deye_Inverter DC Temperature"
+      unique_id: Deye_Inverter DC Temperature
+      device_class: temperature
+      unit_of_measurement: "°C"
+      slave: 1
+      address: 090
+      data_type: int16
+      input_type: holding
+      scale: 0.1
+      offset: -100
+      precision: 1
+      scan_interval: 1
+
+    # 091 AC Temperature
+    - name: "Deye_Inverter AC Temperature"
+      unique_id: Deye_Inverter AC Temperature
+      device_class: temperature
+      unit_of_measurement: "°C"
+      slave: 1
+      address: 091
+      data_type: int16
+      input_type: holding
+      scale: 0.1
+      offset: -100
+      precision: 1
+      scan_interval: 1
+
+###   READ SETTINGS   ###
+
+    # 250 Prog1 Time
+    - name: "Deye_Inverter Prog1 Time RAW"
+      unique_id: Deye_Inverter Prog1 Time RAW
+      slave: 1
+      address: 250
+      data_type: uint16
+      input_type: holding
+      scan_interval: 1
+
+    # 250 Prog2 Time
+    - name: "Deye_Inverter Prog2 Time RAW"
+      unique_id: Deye_Inverter Prog2 Time RAW
+      slave: 1
+      address: 251
+      data_type: uint16
+      input_type: holding
+      scan_interval: 1
+
+    # 250 Prog3 Time
+    - name: "Deye_Inverter Prog3 Time RAW"
+      unique_id: Deye_Inverter Prog3 Time RAW
+      slave: 1 
+      address: 252
+      data_type: uint16
+      input_type: holding
+      scan_interval: 1
+
+    # 250 Prog4 Time
+    - name: "Deye_Inverter Prog4 Time RAW"
+      unique_id: Deye_Inverter Prog4 Time RAW
+      slave: 1
+      address: 253
+      data_type: uint16
+      input_type: holding
+      scan_interval: 1
+
+    # 250 Prog5 Time
+    - name: "Deye_Inverter Prog5 Time RAW"
+      unique_id: Deye_Inverter Prog5 Time RAW
+      slave: 1
+      address: 254
+      data_type: uint16
+      input_type: holding
+      scan_interval: 1
+
+    # 250 Prog6 Time
+    - name: "Deye_Inverter Prog6 Time RAW"
+      unique_id: Deye_Inverter Prog6 Time RAW
+      slave: 1
+      address: 255
+      data_type: uint16
+      input_type: holding
+      scan_interval: 1
+
+    # 245 Max Sell Power
+    - name: "Deye_Inverter Max Sell Power"
+      unique_id: Deye_Inverter Max Sell Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 245
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 8000
+ #      step: 500
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 230 Grid Charge Battery Current
+    - name: "Deye_Inverter Grid Charge Battery Current"
+      unique_id: Deye_Inverter Grid Charge Battery Current
+      device_class: current
+      unit_of_measurement: "A"
+      slave: 1
+      address: 230
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 185
+ #      step: 5
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 210 Battery Max Charge Current
+    - name: "Deye_Inverter Battery Max Charge Current"
+      unique_id: Deye_Inverter Battery Max Charge Current
+      device_class: current
+      unit_of_measurement: "A"
+      slave: 1
+      address: 210
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 185
+ #      step: 5
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 211 Battery Max Discharge Current
+    - name: "Deye_Inverter Battery Max Discharge Current"
+      unique_id: Deye_Inverter Battery Max Discharge Current
+      device_class: current
+      unit_of_measurement: "A"
+      slave: 1
+      address: 211
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 185
+ #      step: 5
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 293 Grid Peak Shaving Power
+    - name: "Deye_Inverter Grid Peak Shaving Power"
+      unique_id: Deye_Inverter Grid Peak Shaving Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 293
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 8000
+ #      step: 5
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 268 Prog1 Capacity
+    - name: "Deye_Inverter Prog1 Capacity"
+      unique_id: Deye_Inverter Prog1 Capacity
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 1
+      address: 268
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 100
+ #      step: 5
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 269 Prog2 Capacity
+    - name: "Deye_Inverter Prog2 Capacity"
+      unique_id: Deye_Inverter Prog2 Capacity
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 1
+      address: 269
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 100
+ #      step: 5
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 270 Prog3 Capacity
+    - name: "Deye_Inverter Prog3 Capacity"
+      unique_id: Deye_Inverter Prog3 Capacity
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 1
+      address: 270
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 100
+ #      step: 5
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 271 Prog4 Capacity
+    - name: "Deye_Inverter Prog4 Capacity"
+      unique_id: Deye_Inverter Prog4 Capacity
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 1
+      address: 271
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 100
+ #      step: 5
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 272 Prog5 Capacity
+    - name: "Deye_Inverter Prog5 Capacity"
+      unique_id: Deye_Inverter Prog5 Capacity
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 1
+      address: 272
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 100
+ #      step: 5
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 273 Prog6 Capacity
+    - name: "Deye_Inverter Prog6 Capacity"
+      unique_id: Deye_Inverter Prog6 Capacity
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 1
+      address: 273
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 100
+ #      step: 5
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 256 Prog1 Power
+    - name: "Deye_Inverter Prog1 Power"
+      unique_id: Deye_Inverter Prog1 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 256
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 8000
+ #      step: 100
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 257 Prog2 Power
+    - name: "Deye_Inverter Prog2 Power"
+      unique_id: Deye_Inverter Prog2 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 257
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 8000
+ #      step: 100
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 258 Prog3 Power
+    - name: "Deye_Inverter Prog3 Power"
+      unique_id: Deye_Inverter Prog3 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 258
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 8000
+ #      step: 100
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 259 Prog4 Power
+    - name: "Deye_Inverter Prog4 Power"
+      unique_id: Deye_Inverter Prog4 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 259
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 8000
+ #      step: 100
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 260 Prog5 Power
+    - name: "Deye_Inverter Prog5 Power"
+      unique_id: Deye_Inverter Prog5 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 260
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 8000
+ #      step: 100
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 261 Prog6 Power
+    - name: "Deye_Inverter Prog6 Power"
+      unique_id: Deye_Inverter Prog6 Power
+      device_class: power
+      unit_of_measurement: "W"
+      slave: 1
+      address: 261
+      data_type: uint16
+      input_type: holding
+ #      min_value: 0
+ #      max_value: 8000
+ #      step: 100
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 262 Prog1 Voltage
+    - name: "Deye_Inverter Prog1 Voltage"
+      unique_id: Deye_Inverter Prog1 Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 262
+      data_type: uint16
+      input_type: holding
+ #      min_value: 41
+ #      max_value: 60
+ #      step: 0.1
+      scale: 0.01
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 263 Prog2 Voltage
+    - name: "Deye_Inverter Prog2 Voltage"
+      unique_id: Deye_Inverter Prog2 Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 263
+      data_type: uint16
+      input_type: holding
+ #      min_value: 41
+ #      max_value: 60
+ #      step: 0.1
+      scale: 0.01
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 264 Prog3 Voltage
+    - name: "Deye_Inverter Prog3 Voltage"
+      unique_id: Deye_Inverter Prog3 Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 264
+      data_type: uint16
+      input_type: holding
+ #      min_value: 41
+ #      max_value: 60
+ #      step: 0.1
+      scale: 0.01
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 265 Prog4 Voltage
+    - name: "Deye_Inverter Prog4 Voltage"
+      unique_id: Deye_Inverter Prog4 Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 265
+      data_type: uint16
+      input_type: holding
+ #      min_value: 41
+ #      max_value: 60
+ #      step: 0.1
+      scale: 0.01
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 266 Prog5 Voltage
+    - name: "Deye_Inverter Prog5 Voltage"
+      unique_id: Deye_Inverter Prog5 Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 266
+      data_type: uint16
+      input_type: holding
+ #      min_value: 41
+ #      max_value: 60
+ #      step: 0.1
+      scale: 0.01
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 267 Prog6 Voltage
+    - name: "Deye_Inverter Prog6 Voltage"
+      unique_id: Deye_Inverter Prog6 Voltage
+      device_class: voltage
+      unit_of_measurement: "V"
+      slave: 1
+      address: 267
+      data_type: uint16
+      input_type: holding
+ #      min_value: 41
+ #      max_value: 60
+ #      step: 0.1
+      scale: 0.01
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 243 Select Energy Patern
+    - name: "Deye_Inverter Energy Patern RAW"
+      unique_id: Deye_Inverter Energy Patern RAW
+      slave: 1
+      address: 243
+      data_type: uint16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 244 Select Work Mode
+    - name: "Deye_Inverter Work Mode RAW"
+      unique_id: Deye_Inverter Work Mode RAW
+      slave: 1
+      address: 244
+      data_type: uint16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 235 Select Generator Input
+    - name: "Deye_Inverter Generator Input RAW"
+      unique_id: Deye_Inverter Generator Input RAW
+      slave: 1 
+      address: 235
+      data_type: uint16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+    # 280 Select Grid Peak Shaving
+    - name: "Deye_Inverter Grid Peak Shaving RAW"
+      unique_id: Deye_Inverter Grid Peak Shaving RAW
+      slave: 1
+      address: 280
+      data_type: uint16
+      input_type: holding
+      scale: 1
+      offset: 0
+      precision: 0
+      scan_interval: 1
+
+###   TEXT SENSORS   ###
+
+    # 059 Inverter Overall State
+    - name: "Deye_Inverter Overall State RAW"
+      unique_id: Deye_Inverter Overall State RAW
+      slave: 1
+      address: 59
+      input_type: holding
+      scan_interval: 1
+
+    # 003 Serial Number Hex 1 
+    - name: "Deye_Inverter Serial Number Hex 1 RAW"
+      unique_id: Deye_Inverter Serial Number Hex 1 RAW
+      slave: 1
+      address: 3
+      input_type: holding
+      scan_interval: 1
+
+    # 004 Serial Number Hex 2
+    - name: "Deye_Inverter Serial Number Hex 2 RAW"
+      unique_id: Deye_Inverter Serial Number Hex 2 RAW
+      slave: 1
+      address: 4
+      input_type: holding
+      scan_interval: 1
+
+    # 005 Serial Number Hex 3
+    - name: "Deye_Inverter Serial Number Hex 3 RAW"
+      unique_id: Deye_Inverter Serial Number Hex 3 RAW
+      slave: 1
+      address: 5
+      input_type: holding
+      scan_interval: 1
+
+    # 006 Serial Number Hex 4
+    - name: "Deye_Inverter Serial Number Hex 4 RAW"
+      unique_id: Deye_Inverter Serial Number Hex 4 RAW
+      slave: 1
+      address: 6
+      input_type: holding
+      scan_interval: 1
+
+    # 007 Serial Number Hex 5
+    - name: "Deye_Inverter Serial Number Hex 5 RAW"
+      unique_id: Deye_Inverter Serial Number Hex 5 RAW
+      slave: 1
+      address: 7
+      input_type: holding
+      scan_interval: 1
+
+###   SWITCHES   ###
+
+  switches:
+  
+    # 232 Toggle Grid Charge
+    - name: "Deye_Inverter Toggle Grid Charge"
+      unique_id: Deye_Inverter Toggle Grid Charge
+      slave: 1
+      address: 232
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 232
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+    # 231 Toggle Generator Charge
+    - name: "Deye_Inverter Toggle Generator Charge"
+      unique_id: Deye_Inverter Toggle Generator Charge
+      slave: 1
+      address: 231
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 231
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+    # 326 Toggle Force Generator
+    - name: "Deye_Inverter Toggle Force Generator"
+      unique_id: Deye_Inverter Toggle Force Generator
+      slave: 1
+      address: 326
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 326
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+    # 247 Toggle Solar Sell
+    - name: "Deye_Inverter Toggle Solar Sell"
+      unique_id: Deye_Inverter Toggle Solar Sell
+      slave: 1
+      address: 247
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 247
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+    # 248 Toggle System Timer
+    - name: "Deye_Inverter Toggle System Timer"
+      unique_id: Deye_Inverter Toggle System Timer
+      slave: 1
+      address: 248
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 248
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+    # 274 Prog1 Charge
+    - name: "Deye_Inverter Prog1 Charge"
+      unique_id: deye_inverter_prog1_Charge
+      slave: 1
+      address: 274
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 274
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+    # 275 Prog2 Charge
+    - name: "Deye_Inverter Prog2 Charge"
+      unique_id: deye_inverter_prog2_Charge
+      slave: 1
+      address: 275
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 275
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+    # 276 Prog3 Charge
+    - name: "Deye_Inverter Prog3 Charge"
+      unique_id: deye_inverter_prog3_Charge
+      slave: 1
+      address: 276
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 276
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+    # 277 Prog4 Charge
+    - name: "Deye_Inverter Prog4 Charge"
+      unique_id: deye_inverter_prog4_Charge
+      slave: 1
+      address: 277
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 277
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+    # 278 Prog5 Charge
+    - name: "Deye_Inverter Prog5 Charge"
+      unique_id: deye_inverter_prog5_Charge
+      slave: 1
+      address: 278
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 278
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+    # 279 Prog6 Charge
+    - name: "Deye_Inverter Prog6 Charge"
+      unique_id: deye_inverter_prog6_Charge
+      slave: 1
+      address: 279
+      write_type: holding
+      command_off: 0
+      command_on: 1
+      verify:
+        address: 279
+        input_type: holding
+        state_off: 0
+        state_on: 1
+
+
+###   TEMPLATES   ###
+
+template:
+  - sensor:
+
+# Inverter Serial Number Formatted  
+      - name: "Deye Inverter Serial Number"
+        unique_id: Deye Inverter Serial Number
+        state: >-
+          {% set hex_value1 = states('sensor.deye_inverter_serial_number_hex_1_raw') %}
+          {% set hex_value2 = states('sensor.deye_inverter_serial_number_hex_2_raw') %}
+          {% set hex_value3 = states('sensor.deye_inverter_serial_number_hex_3_raw') %}
+          {% set hex_value4 = states('sensor.deye_inverter_serial_number_hex_4_raw') %}
+          {% set hex_value5 = states('sensor.deye_inverter_serial_number_hex_5_raw') %}
+          {{ hex_value1[0:2] + hex_value2[0:2] + hex_value3[0:2] + hex_value4[0:2] + hex_value5[0:2] }}
+  
+# 059 Inverter Overall State
+      - name: "Deye Inverter Overall State"
+        unique_id: Deye Inverter Overall State
+        state: >
+          {% set value = states('sensor.deye_inverter_overall_state_raw') | int %}
+          {% if value == 0 %}
+            Standby
+          {% elif value == 1 %}
+            Selftest
+          {% elif value == 2 %}
+            Normal
+          {% elif value == 3 %}
+            Alarm!
+          {% elif value == 4 %}
+            Fault
+          {% else %}
+            Unknown
+          {% endif %}
+
+# 243 Select Energy Patern
+      - name: "Deye Inverter Energy Patern"
+        unique_id: Deye Inverter Energy Patern
+        state: >
+          {% set value = states('sensor.deye_inverter_energy_patern_raw') | int %}
+          {% if value == 0 %}
+            Battery First
+          {% elif value == 1 %}
+            Load First
+          {% else %}
+            Unknown
+          {% endif %}
+
+# 244 Select Work Mode
+      - name: "Deye Inverter Work Mode"
+        unique_id: Deye Inverter Work Mode
+        state: >
+          {% set value = states('sensor.deye_inverter_work_mode_raw') | int %}
+          {% if value == 0 %}
+            Selling First
+          {% elif value == 1 %}
+            Zero Export + Limit to Load Only
+          {% elif value == 2 %}
+            Limited to Home
+          {% else %}
+            Unknown
+          {% endif %}
+
+#235 Select Generator Input
+      - name: "Deye Inverter Generator Input"
+        unique_id: Deye Inverter Generator Input
+        state: >
+          {% set value = states('sensor.deye_inverter_generator_input_raw') | int %}
+          {% if value == 0 %}
+            Disable
+          {% elif value == 1 %}
+            Output
+          {% elif value == 2 %}
+            Input
+          {% else %}
+            Unknown
+          {% endif %}
+
+# 280 Select Grid Peak Shaving
+      - name: "Deye Inverter Grid Peak Shaving"
+        unique_id: Deye Inverter Grid Peak Shaving
+        state: >
+          {% set value = states('sensor.deye_inverter_grid_peak_shaving_raw') | int %}
+          {% if value == 0 %}
+            Disabled
+          {% elif value == 256 %}
+            Enabled
+          {% else %}
+            Unknown
+          {% endif %}
+
+# Sum of PV1 and PV2 to get total PV Power
+      - name: "Deye Inverter Solar Power"
+        unique_id: Deye Inverter Solar Power
+        unit_of_measurement: "W"
+        state: >-
+          {{ (states('sensor.deye_inverter_pv1_power') | float + states('sensor.deye_inverter_pv2_power') | float) | round(0) }}
+        device_class: power
+        state_class: measurement
+
+# Essential Power based on register 175 + 169 - 166
+      - name: "Deye Inverter Essential Power"
+        unique_id: Deye Inverter Essential Power
+        unit_of_measurement: "W"
+        state: >-
+          {{ (states('sensor.deye_inverter_power') | float + states('sensor.deye_inverter_grid_power') | float - states('sensor.deye_inverter_aux_power') | float) | int }}
+        device_class: power
+        state_class: measurement
+
+# Nonessential Power based on register 172 - 169
+      - name: "Deye Inverter Nonessential Power"
+        unique_id: Deye Inverter Nonessential Power
+        unit_of_measurement: "W"
+        state: >- 
+          {{ (states('sensor.deye_inverter_grid_ct_power') | float - states('sensor.deye_inverter_grid_power') | float) | int }}
+        device_class: power
+        state_class: measurement
+        
+# Inverter Prog1 Time Formatted
+      - name: "Deye Inverter Prog1 Time"
+        unique_id: Deye Inverter Prog1 Time
+        state: >-
+          {% set time_value = states('sensor.deye_inverter_prog1_time_raw') | int %}
+          {% if time_value is not none and time_value >= 0 and time_value <= 2359 %}
+            {% set hours = time_value // 100 %}
+            {% set minutes = time_value % 100 %}
+            {{ '{:02d}:{:02d}'.format(hours, minutes) }}
+          {% else %}
+            unavailable
+          {% endif %}
+
+# Inverter Prog2 Time Formatted
+      - name: "Deye Inverter Prog2 Time"
+        unique_id: Deye Inverter Prog2 Time
+        state: >-
+          {% set time_value = states('sensor.deye_inverter_prog2_time_raw') | int %}
+          {% if time_value is not none and time_value >= 0 and time_value <= 2359 %}
+            {% set hours = time_value // 100 %}
+            {% set minutes = time_value % 100 %}
+            {{ '{:02d}:{:02d}'.format(hours, minutes) }}
+          {% else %}
+            unavailable
+          {% endif %}
+
+# Inverter Prog3 Time Formatted
+      - name: "Deye Inverter Prog3 Time"
+        unique_id: Deye Inverter Prog3 Time
+        state: >-
+          {% set time_value = states('sensor.deye_inverter_prog3_time_raw') | int %}
+          {% if time_value is not none and time_value >= 0 and time_value <= 2359 %}
+            {% set hours = time_value // 100 %}
+            {% set minutes = time_value % 100 %}
+            {{ '{:02d}:{:02d}'.format(hours, minutes) }}
+          {% else %}
+            unavailable
+          {% endif %}
+
+# Inverter Prog4 Time Formatted
+      - name: "Deye Inverter Prog4 Time"
+        unique_id: Deye Inverter Prog4 Time
+        state: >-
+          {% set time_value = states('sensor.deye_inverter_prog4_time_raw') | int %}
+          {% if time_value is not none and time_value >= 0 and time_value <= 2359 %}
+            {% set hours = time_value // 100 %}
+            {% set minutes = time_value % 100 %}
+            {{ '{:02d}:{:02d}'.format(hours, minutes) }}
+          {% else %}
+            unavailable
+          {% endif %}
+
+# Inverter Prog5 Time Formatted
+      - name: "Deye Inverter Prog5 Time"
+        unique_id: Deye Inverter Prog5 Time
+        state: >-
+          {% set time_value = states('sensor.deye_inverter_prog5_time_raw') | int %}
+          {% if time_value is not none and time_value >= 0 and time_value <= 2359 %}
+            {% set hours = time_value // 100 %}
+            {% set minutes = time_value % 100 %}
+            {{ '{:02d}:{:02d}'.format(hours, minutes) }}
+          {% else %}
+            unavailable
+          {% endif %}
+
+# Inverter Prog6 Time Formatted
+      - name: "Deye Inverter Prog6 Time"
+        unique_id: Deye Inverter Prog6 Time
+        state: >-
+          {% set time_value = states('sensor.deye_inverter_prog6_time_raw') | int %}
+          {% if time_value is not none and time_value >= 0 and time_value <= 2359 %}
+            {% set hours = time_value // 100 %}
+            {% set minutes = time_value % 100 %}
+            {{ '{:02d}:{:02d}'.format(hours, minutes) }}
+          {% else %}
+            unavailable
+          {% endif %}
+
+###   Efficenza Inverter   ###
+
+#      - name: potenza_dc_in_battery_deye_inverter                           ###   only for external mppt device in your system   ###
+#        unique_id: potenza_dc_in_battery_deye_inverter   
+#        state_class: measurement
+#        unit_of_measurement: 'W'
+#        state: "{{ '{:.2f}'.format
+#        (states('sensor.victron_mppt_tot_power_to_battery') | float(0) -    ###   add your mppt sensor power to battery   ###
+#        states('sensor.jk_bms_tot_power_in') | float(0) +                   ###   add your bms or shunt sensor power in   ###
+#        states('sensor.jk_bms_tot_power_out') | float(0)) }}"               ###   add your bms or shunt sensor power out   ###
+
+###   Trasformazione DC to AC - Efficenza Inverter   ###
+
+      - name: efficenza_deye_dc_ac_internal                                  
+        unique_id: efficenza_deye_dc_ac_internal
+        state_class: measurement
+        unit_of_measurement: '%'
+        state: "{{ '{:.2f}'.format
+        (states('sensor.deye_inverter_power') |float(0) / 
+        states('sensor.deye_inverter_battery_power') |float(0) * 100) }}"               
+
+#      - name: efficenza_deye_dc_ac_external                                  ###   only for external mppt device in your system   ###
+#        unique_id: efficenza_deye_dc_ac_external  
+#        state_class: measurement
+#        unit_of_measurement: '%'
+#        state: "{{ '{:.2f}'.format
+#        (states('sensor.deye_inverter_power') |float(0) / 
+#        states('sensor.potenza_dc_in_inverter_1') |float(0) * 100) }}"                
+
+###   Conversione DC to DC - Efficenza Mppt   ###
+
+      - name: efficenza_mppt_1_deye                                           ###   The reported value will only be correct if the inverter is not supplying power to anything other than the battery   ###
+        unique_id: efficenza_mppt_1_deye
+        state_class: measurement
+        unit_of_measurement: '%'
+        state: "{{ '{:.2f}'.format
+        (states('sensor.deye_inverter_battery_power') |float(0) / 
+        states('sensor.deye_inverter_pv1_power') |float(0) * 100) }}"
+
+      - name: efficenza_mppt_2_deye
+        unique_id: efficenza_mppt_2_deye
+        state_class: measurement
+        unit_of_measurement: '%'
+        state: "{{ '{:.2f}'.format
+        (states('sensor.deye_inverter_battery_power') |float(0) / 
+        states('sensor.deye_inverter_pv2_power') |float(0) * 100) }}"
